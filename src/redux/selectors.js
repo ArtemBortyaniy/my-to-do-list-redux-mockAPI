@@ -1,10 +1,4 @@
-import { useSelector } from 'react-redux';
-
-// Custom hook to get tasks
-export const useTasksSelector = () => {
-  return useSelector(state => state.tasks);
-};
-
-export const useFiltersSelector = () => {
-  return useSelector(state => state.filters.status);
-};
+export const getTasks = state => state.tasks.items;
+export const getIsLoading = state => state.tasks.isLoading;
+export const getError = state => state.tasks.error;
+export const getStatusFilter = state => state.filters.status;
