@@ -60,10 +60,12 @@ export const toggleCompleted = createAsyncThunk(
 
 export const editTask = createAsyncThunk(
   'tasks/editTask',
-  async (task, thunkAPI) => {
+  async ({ task, text }, thunkAPI) => {
     try {
-      const response = await axios.put(`/tasks/${task.id}`);
-      console.log(task.updateTask);
+      const response = await axios.put(`/tasks/${task.id}`, {
+        text: text,
+      });
+      console.log(task);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

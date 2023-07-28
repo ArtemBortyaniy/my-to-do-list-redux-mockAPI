@@ -69,10 +69,11 @@ const tasksSlise = createSlice({
     [editTask.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      const index = state.items.findIndex(
-        task => task.id === action.payload.id
-      );
-      state.items[index].text = action.payload.updateTask;
+      state.items = state.items.map(item => {
+        return item.id === action.payload.id
+          ? { ...item, text: action.payload.text }
+          : item;
+      });
     },
     [editTask.rejected]: handleRejected,
   },

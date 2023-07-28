@@ -13,7 +13,7 @@ export const Task = ({ task }) => {
   const handleSubmitEditor = e => {
     e.preventDefault();
     const form = e.target;
-    dispatch(editTask({ updateTask: form.elements.text.value, id: task.id }));
+    dispatch(editTask({ task, text: form.elements.text.value }));
     form.reset();
   };
 
